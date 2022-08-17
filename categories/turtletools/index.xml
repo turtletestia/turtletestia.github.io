@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Turtletools on Turtletopia: a blog about programming in R</title>
-    <link>/categories/turtletools/</link>
+    <link>https://turtletestia.github.io</link>
     <description>Recent content in Turtletools on Turtletopia: a blog about programming in R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Aug 2022 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/turtletools/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://turtletestia.github.io/categories/turtletools/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Show Pride on Your Plots</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/2022/08/12/show-pride-on-your-plots/</link>
+      <title>Show Pride on Your Plots</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/2022/08/12/show-pride-on-your-plots/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/08/12/show-pride-on-your-plots/</guid>
+      <guid>https://turtletestia.github.io/2022/08/12/show-pride-on-your-plots/</guid>
       
       <description>
 
@@ -36,14 +36,14 @@ library(gglgbtq)
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   geom_point(size = 2) +
   scale_color_manual(values = palette_lgbtq(&amp;quot;genderqueer&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../2022/08/12/show-pride-on-your-plots/index_files/figure-html/genderqueer_no_theme-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://turtletestia.github.io/2022/08/12/show-pride-on-your-plots/index_files/figure-html/genderqueer_no_theme-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This is why I included &lt;code&gt;theme_lgbtq()&lt;/code&gt;. Each palette has its own custom theme for increased readability (although many themes are reused across multiple palettes). Check out the difference!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Is it considered &amp;quot;another time&amp;quot; or just &amp;quot;the last use part II&amp;quot;?
 ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   geom_point(size = 2) +
   scale_color_manual(values = palette_lgbtq(&amp;quot;genderqueer&amp;quot;)) +
   theme_lgbtq(&amp;quot;genderqueer&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../2022/08/12/show-pride-on-your-plots/index_files/figure-html/genderqueer_w_theme-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://turtletestia.github.io/2022/08/12/show-pride-on-your-plots/index_files/figure-html/genderqueer_w_theme-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The difference isn’t much, but I found this gray to be the perfect balance for most palettes that include white (which is like 85% or so of all LGBT+ flags). But there are palettes without white, like this one:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# I spent like 10 minutes sifting through the base datasets
 # but - behold! - a non-iris dataset at last
@@ -51,7 +51,7 @@ ggplot(warpbreaks, aes(x = wool, y = breaks, fill = tension)) +
   geom_bar(stat = &amp;quot;identity&amp;quot;, position = &amp;quot;dodge&amp;quot;) +
   scale_fill_manual(values = palette_lgbtq(&amp;quot;pansexual&amp;quot;)) +
   theme_lgbtq(&amp;quot;pansexual&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../2022/08/12/show-pride-on-your-plots/index_files/figure-html/pansexual_w_theme-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://turtletestia.github.io/2022/08/12/show-pride-on-your-plots/index_files/figure-html/pansexual_w_theme-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;For now I included 16 palettes, but expect more (and if you want a specific flag to be included in the next release, write an issue on GitHub, strike a message on Twitter, or send a pigeon with a letter):&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;palettes.png&#34; alt=&#34;&#34; /&gt;
@@ -65,11 +65,11 @@ remotes::install_github(&amp;quot;turtletopia/gglgbtq&amp;quot;)&lt;/code&gt;&lt
     </item>
     
     <item>
-      <title>Case Study: Modularizing a Package</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/2022/08/04/case-study-modularizing-a-package/</link>
+      <title>Case Study: Modularizing a Package</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/2022/08/04/case-study-modularizing-a-package/</link>
       <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/08/04/case-study-modularizing-a-package/</guid>
+      <guid>https://turtletestia.github.io/2022/08/04/case-study-modularizing-a-package/</guid>
       
       <description>
 
@@ -165,12 +165,12 @@ woodendesc::wood_core_packages()&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Ice Cream for R Programmers</title><enclosure url="%25!s%28%3cnil%3e%29/2022/07/28/ice-cream-for-r-programmers/icecream.png" type="image/jpg"></enclosure>
+      <title>Ice Cream for R Programmers</title><enclosure url="https://turtletestia.github.iohttps://turtletestia.github.io/2022/07/28/ice-cream-for-r-programmers/icecream.png" type="image/jpg"></enclosure>
       
-      <link>/2022/07/28/ice-cream-for-r-programmers/</link>
+      <link>https://turtletestia.github.io/2022/07/28/ice-cream-for-r-programmers/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/07/28/ice-cream-for-r-programmers/</guid>
+      <guid>https://turtletestia.github.io/2022/07/28/ice-cream-for-r-programmers/</guid>
       
       <description>
 

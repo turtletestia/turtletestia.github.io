@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>modularization on Turtletopia: a blog about programming in R</title>
-    <link>/tags/modularization/</link>
+    <link>https://turtletestia.github.io</link>
     <description>Recent content in modularization on Turtletopia: a blog about programming in R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 04 Aug 2022 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/modularization/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://turtletestia.github.io/tags/modularization/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Case Study: Modularizing a Package</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/2022/08/04/case-study-modularizing-a-package/</link>
+      <title>Case Study: Modularizing a Package</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/2022/08/04/case-study-modularizing-a-package/</link>
       <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/08/04/case-study-modularizing-a-package/</guid>
+      <guid>https://turtletestia.github.io/2022/08/04/case-study-modularizing-a-package/</guid>
       
       <description>
 

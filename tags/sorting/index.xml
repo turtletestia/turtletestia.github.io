@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sorting on Turtletopia: a blog about programming in R</title>
-    <link>/tags/sorting/</link>
+    <link>https://turtletestia.github.io</link>
     <description>Recent content in sorting on Turtletopia: a blog about programming in R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Jul 2022 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://turtletestia.github.io/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Overview: Sorting Version Codes</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/2022/07/16/overview-sort-version-codes/</link>
+      <title>Overview: Sorting Version Codes</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/2022/07/16/overview-sort-version-codes/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/07/16/overview-sort-version-codes/</guid>
+      <guid>https://turtletestia.github.io/2022/07/16/overview-sort-version-codes/</guid>
       
       <description>
 

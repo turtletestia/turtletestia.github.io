@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>packages on Turtletopia: a blog about programming in R</title>
-    <link>/tags/packages/</link>
+    <link>https://turtletestia.github.io</link>
     <description>Recent content in packages on Turtletopia: a blog about programming in R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Jul 2022 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/packages/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://turtletestia.github.io/tags/packages/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Ice Cream for R Programmers</title><enclosure url="%25!s%28%3cnil%3e%29/2022/07/28/ice-cream-for-r-programmers/icecream.png" type="image/jpg"></enclosure>
+      <title>Ice Cream for R Programmers</title><enclosure url="https://turtletestia.github.iohttps://turtletestia.github.io/2022/07/28/ice-cream-for-r-programmers/icecream.png" type="image/jpg"></enclosure>
       
-      <link>/2022/07/28/ice-cream-for-r-programmers/</link>
+      <link>https://turtletestia.github.io/2022/07/28/ice-cream-for-r-programmers/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/07/28/ice-cream-for-r-programmers/</guid>
+      <guid>https://turtletestia.github.io/2022/07/28/ice-cream-for-r-programmers/</guid>
       
       <description>
 
@@ -149,11 +149,11 @@ loc &amp;lt;- rlang:::src_loc(ref)&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Overview: Sorting Version Codes</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/2022/07/16/overview-sort-version-codes/</link>
+      <title>Overview: Sorting Version Codes</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/2022/07/16/overview-sort-version-codes/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/07/16/overview-sort-version-codes/</guid>
+      <guid>https://turtletestia.github.io/2022/07/16/overview-sort-version-codes/</guid>
       
       <description>
 

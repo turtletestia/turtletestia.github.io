@@ -2,321 +2,321 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Turtletopia: a blog about programming in R</title>
-    <link>/tags/</link>
+    <link>https://turtletestia.github.io</link>
     <description>Recent content in Tags on Turtletopia: a blog about programming in R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Aug 2022 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://turtletestia.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>ggplot2</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/ggplot2/</link>
+      <title>ggplot2</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/ggplot2/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/ggplot2/</guid>
+      <guid>https://turtletestia.github.io/tags/ggplot2/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>lgbtq</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/lgbtq/</link>
+      <title>lgbtq</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/lgbtq/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/lgbtq/</guid>
+      <guid>https://turtletestia.github.io/tags/lgbtq/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>palettes</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/palettes/</link>
+      <title>palettes</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/palettes/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/palettes/</guid>
+      <guid>https://turtletestia.github.io/tags/palettes/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>pride</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/pride/</link>
+      <title>pride</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/pride/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/pride/</guid>
+      <guid>https://turtletestia.github.io/tags/pride/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>r</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/r/</link>
+      <title>r</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/r/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>https://turtletestia.github.io/tags/r/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>turtletools</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/turtletools/</link>
+      <title>turtletools</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/turtletools/</link>
       <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/turtletools/</guid>
+      <guid>https://turtletestia.github.io/tags/turtletools/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>essay</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/essay/</link>
+      <title>essay</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/essay/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/essay/</guid>
+      <guid>https://turtletestia.github.io/tags/essay/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>function</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/function/</link>
+      <title>function</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/function/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/function/</guid>
+      <guid>https://turtletestia.github.io/tags/function/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>language feature</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/language-feature/</link>
+      <title>language feature</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/language-feature/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/language-feature/</guid>
+      <guid>https://turtletestia.github.io/tags/language-feature/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>magrittr</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/magrittr/</link>
+      <title>magrittr</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/magrittr/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/magrittr/</guid>
+      <guid>https://turtletestia.github.io/tags/magrittr/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>NSE</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/nse/</link>
+      <title>NSE</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/nse/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/nse/</guid>
+      <guid>https://turtletestia.github.io/tags/nse/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>operator</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/operator/</link>
+      <title>operator</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/operator/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/operator/</guid>
+      <guid>https://turtletestia.github.io/tags/operator/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>rlang</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/rlang/</link>
+      <title>rlang</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/rlang/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rlang/</guid>
+      <guid>https://turtletestia.github.io/tags/rlang/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>tidysq</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/tidysq/</link>
+      <title>tidysq</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/tidysq/</link>
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tidysq/</guid>
+      <guid>https://turtletestia.github.io/tags/tidysq/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>deepdep</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/deepdep/</link>
+      <title>deepdep</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/deepdep/</link>
       <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/deepdep/</guid>
+      <guid>https://turtletestia.github.io/tags/deepdep/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>dependencies</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/dependencies/</link>
+      <title>dependencies</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/dependencies/</link>
       <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/dependencies/</guid>
+      <guid>https://turtletestia.github.io/tags/dependencies/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>dependency optimizing</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/dependency-optimizing/</link>
+      <title>dependency optimizing</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/dependency-optimizing/</link>
       <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/dependency-optimizing/</guid>
+      <guid>https://turtletestia.github.io/tags/dependency-optimizing/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>modularization</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/modularization/</link>
+      <title>modularization</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/modularization/</link>
       <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/modularization/</guid>
+      <guid>https://turtletestia.github.io/tags/modularization/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>woodendesc</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/woodendesc/</link>
+      <title>woodendesc</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/woodendesc/</link>
       <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/woodendesc/</guid>
+      <guid>https://turtletestia.github.io/tags/woodendesc/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>code style</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/code-style/</link>
+      <title>code style</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/code-style/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/code-style/</guid>
+      <guid>https://turtletestia.github.io/tags/code-style/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>debugging</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/debugging/</link>
+      <title>debugging</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/debugging/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/debugging/</guid>
+      <guid>https://turtletestia.github.io/tags/debugging/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>packages</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/packages/</link>
+      <title>packages</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/packages/</link>
       <pubDate>Thu, 28 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/packages/</guid>
+      <guid>https://turtletestia.github.io/tags/packages/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>natural sort</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/natural-sort/</link>
+      <title>natural sort</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/natural-sort/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/natural-sort/</guid>
+      <guid>https://turtletestia.github.io/tags/natural-sort/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>overview</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/overview/</link>
+      <title>overview</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/overview/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/overview/</guid>
+      <guid>https://turtletestia.github.io/tags/overview/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>sorting</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/sorting/</link>
+      <title>sorting</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/sorting/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/sorting/</guid>
+      <guid>https://turtletestia.github.io/tags/sorting/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>version codes</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/version-codes/</link>
+      <title>version codes</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/version-codes/</link>
       <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/version-codes/</guid>
+      <guid>https://turtletestia.github.io/tags/version-codes/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>environments</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/environments/</link>
+      <title>environments</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/environments/</link>
       <pubDate>Sat, 09 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/environments/</guid>
+      <guid>https://turtletestia.github.io/tags/environments/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>reactivity</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/reactivity/</link>
+      <title>reactivity</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/reactivity/</link>
       <pubDate>Sat, 09 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/reactivity/</guid>
+      <guid>https://turtletestia.github.io/tags/reactivity/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>shiny</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/shiny/</link>
+      <title>shiny</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/shiny/</link>
       <pubDate>Sat, 09 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/shiny/</guid>
+      <guid>https://turtletestia.github.io/tags/shiny/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>tutorial</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/tutorial/</link>
+      <title>tutorial</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/tutorial/</link>
       <pubDate>Sat, 09 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tutorial/</guid>
+      <guid>https://turtletestia.github.io/tags/tutorial/</guid>
       
       <description></description>
     </item>
     
     <item>
-      <title>organisational</title><enclosure url="/images/logo.png" type="image/jpg"></enclosure>
-      <link>/tags/organisational/</link>
+      <title>organisational</title><enclosure url="https://turtletestia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>https://turtletestia.github.io/tags/organisational/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>/tags/organisational/</guid>
+      <guid>https://turtletestia.github.io/tags/organisational/</guid>
       
       <description></description>
     </item>
