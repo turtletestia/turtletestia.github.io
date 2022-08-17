@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Organisational on Turtletopia: a blog about programming in R</title>
+    <link>/categories/organisational/</link>
+    <description>Recent content in Organisational on Turtletopia: a blog about programming in R</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/organisational/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello world</title><enclosure url="https://turtletopia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>/2022/07/01/hello-world/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/07/01/hello-world/</guid><description>&lt;p&gt;Hi all!&lt;/p&gt;
+&lt;p&gt;I think it would be some aberration to start a programming blog with a post with any other title than &amp;ldquo;Hello world&amp;rdquo;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;I am Dominik. I am a software developer and Data Science student (with the time of graduation approaching with high velocity). My friend Laura and I are passionate about programming in R. We love creating tools and playing with language to please others and ourselves (in any order).&lt;/p&gt;
+&lt;p&gt;This blog is meant for us to write about R.&lt;/p&gt;
+&lt;p&gt;(Probably not only R, but hey, this is the language we have the most experience with)&lt;/p&gt;
+&lt;p&gt;We will publish here information about the open-source stuff we make. We will show some obstacles we have stumbled upon and our ways around them. We will praise the language and complain about it. We will share other cool toys we have found and love using. &lt;del&gt;We will rock you&lt;/del&gt;.&lt;/p&gt;
+&lt;p&gt;You can find some of our packages in our &lt;a href=&#34;https://github.com/turtletopia&#34;&gt;GitHub organization&lt;/a&gt;. Soon there will be many rearrangements, and we will focus on finally turning our recent ideas into flesh.&lt;/p&gt;
+&lt;p&gt;Stay tuned!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

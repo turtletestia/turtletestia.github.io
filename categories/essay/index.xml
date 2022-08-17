@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Essay on Turtletopia: a blog about programming in R</title>
+    <link>/categories/essay/</link>
+    <description>Recent content in Essay on Turtletopia: a blog about programming in R</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/essay/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sonnet to infix function</title><enclosure url="https://turtletopia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>/2022/08/10/sonnet-to-infix-function/</link>
+      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/10/sonnet-to-infix-function/</guid><description>
+
+
+&lt;div id=&#34;some-poetry-for-the-programmers&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Some poetry for the programmers&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Blest be the day, and blest be the month and year,&lt;/p&gt;
+&lt;p&gt;Season and hour and very moment blest,&lt;/p&gt;
+&lt;p&gt;The lovely IDE where first possessed&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;By two percent signs I found me prisoner; (…)&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Francesco Petrarch, Sonnet 61. Translated by Joseph Auslander. Possibly with some spicing it up by me&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;subject-and-addressee-of-the-poem&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Subject and addressee of the poem&lt;/h1&gt;
+&lt;p&gt;Custom infix functions are one of my favorite features in R. This article is my love letter to them. But first, a quick recap.&lt;/p&gt;
+&lt;p&gt;For those unfamiliar with the terminology, &lt;em&gt;infix function&lt;/em&gt; is a function &lt;code&gt;fun&lt;/code&gt; which is called using &lt;code&gt;infix notation&lt;/code&gt;, e.g., &lt;code&gt;x fun y&lt;/code&gt; instead of &lt;code&gt;fun(x, y)&lt;/code&gt;. Those functions are also called &lt;em&gt;infix operators&lt;/em&gt; by base R, and I will use those terms and name &lt;em&gt;infixes&lt;/em&gt; interchangeably. There are a lot of infix operators in base R used very frequently, i.e., arithmetic or logical operators. We use them so often that we usually forget that they are functions. And that we can &lt;strong&gt;call them just like regular functions&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;23 + 19&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 42&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`+`(23, 19)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 42&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you may have noticed, when calling such a function in a non-infix-manner, we need to use backticks around the operator to avoid calling it regularly.&lt;/p&gt;
+&lt;p&gt;To prove that they share a lot of typical behavior with functions, I am going to demonstrate to you how to &lt;strong&gt;redefine them just like regular functions&lt;/strong&gt;. We can, for example, make the &lt;code&gt;+&lt;/code&gt; operator work like a multiplication.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`+` &amp;lt;- function(lhs, rhs) lhs * rhs
+23 + 19&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 437&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let it ring out loud: &lt;strong&gt;you should not do that at all&lt;/strong&gt;. Overriding the default behavior of functions may be dangerous, as it interferes with other chunks of code using the operator. I showed this trick only for demonstration purposes.&lt;/p&gt;
+&lt;p&gt;(Side note: you might be aware that some packages change the default behavior of operators, e.g., &lt;code&gt;ggplot2&lt;/code&gt; has its own &lt;code&gt;+&lt;/code&gt; for joining plot elements. However, this is a slightly different situation. They do not create a whole new function but only add a &lt;em&gt;method&lt;/em&gt; for &lt;em&gt;generic function&lt;/em&gt;. They do not &lt;em&gt;override&lt;/em&gt; the behavior, but more like &lt;em&gt;overload&lt;/em&gt; it.)&lt;/p&gt;
+&lt;p&gt;Additional remark to make: in this assignment call, backticks are also necessary. An alternative is using quotes, but it is inadvisable, and its presence in the language is entirely due to legacy reasons. You can read more about it in &lt;a href=&#34;https://adv-r.hadley.nz/names-values.html#non-syntactic&#34;&gt;Hadley’s book&lt;/a&gt;. In &lt;a href=&#34;https://adv-r.hadley.nz/functions.html?q=infix#infix-functions&#34;&gt;another chapter&lt;/a&gt;, you can find more about infix functions.&lt;/p&gt;
+&lt;p&gt;Once again: &lt;strong&gt;do not override built-in infix functions&lt;/strong&gt;. BUT. &lt;strong&gt;Create custom infix functions!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;R allows for creating your operators using double &lt;strong&gt;percent signs&lt;/strong&gt;. A few shipped with the base R packages, including inclusion operator &lt;code&gt;%in%&lt;/code&gt; (pun intended) or matrix multiplication operator &lt;code&gt;%*%&lt;/code&gt;. But You can create more. And we will explore it in the next section.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;enumeration-is-an-important-stylistic-device&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Enumeration is an important stylistic device&lt;/h1&gt;
+&lt;div id=&#34;piping-operators&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Piping operators&lt;/h2&gt;
+&lt;p&gt;The most widely known example is the piping operator: &lt;code&gt;%&amp;gt;%&lt;/code&gt;. I assume that you are familiar with it. If not, &lt;a href=&#34;https://dplyr.tidyverse.org/&#34;&gt;you better get to know the dplyr package&lt;/a&gt;. The pipe comes from &lt;a href=&#34;https://magrittr.tidyverse.org/&#34;&gt;magrittr&lt;/a&gt; package, but dplyr shows its natural strength and the most significant advantage of using custom operators: &lt;strong&gt;custom infixes make code more readable&lt;/strong&gt;. When we apply operations one by one, it makes more sense to write those operations in order of application, not inverse order, as we do without infix operators. The operator’s shape is also essential, as it suggests the direction of the data flow. For me, it is more natural to read and understand&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x %&amp;gt;% 
+  fun_1 %&amp;gt;% 
+  fun_2 %&amp;gt;% 
+  fun_3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rather than&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fun_3(fun_2(fun_1(x)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It became so popular that R 4.1.0 included its pipe, &lt;code&gt;|&amp;gt;&lt;/code&gt;. However, I will not dwell more on that because others have already said a lot about pipes. I only want to mention, what is often forgotten by newcomers, that magrittr offer more than one type of pipe. Go check them out if you don’t know them!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;null-default-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;NULL-default operator&lt;/h2&gt;
+&lt;p&gt;Another tremendous and straightforward function is &lt;code&gt;%||%&lt;/code&gt;. It is exported by the &lt;em&gt;rlang&lt;/em&gt; package (it’s the turtleblog after all”, so rlang mention is obligatory), but other packages borrow this idea to avoid dependency. The code is straightforward and clearly explains what the function is intended to do.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`%||%` &amp;lt;- function(lhs, rhs) if (is.null(lhs)) rhs else lhs
+
+34 %||% 8&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 34&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;NULL %||% 10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This one comes in handy when you have optional &lt;code&gt;NULL&lt;/code&gt;s returned by a function or possibly &lt;code&gt;NULL&lt;/code&gt; parameters of the function or named function arguments. In the code, it looks way more straightforward than the expansion of the function definition itself. I usually do not export such a helper function to the end user. But it is worth repeating that &lt;strong&gt;readability of your code for yourself should be as important as readability for others&lt;/strong&gt;. If such infixes help you, then you should use them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;null-propagating-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;NULL-propagating operator&lt;/h2&gt;
+&lt;p&gt;Let’s stay with &lt;code&gt;NULL&lt;/code&gt;-related functions for a little longer. Now it is time for my creation. When I build packages or shiny apps, it happens quite often that I need to apply some function to some object, but if it is &lt;code&gt;NULL&lt;/code&gt;, I need to return &lt;code&gt;NULL&lt;/code&gt;. For those situations, I created the &lt;code&gt;%?&amp;gt;%&lt;/code&gt; operator:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`%?&amp;gt;%` &amp;lt;- function(lhs, rhs) if (is.null(lhs)) NULL else rhs(lhs)
+
+7 %?&amp;gt;% exp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1096.633&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;NULL %?&amp;gt;% exp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This one is some modification of a standard pipe but serves a specific purpose. It simplified my code significantly, and I love it for its &lt;strong&gt;conciseness&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;motif-inclusion-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Motif inclusion operator&lt;/h2&gt;
+&lt;p&gt;Now, an example from one of our packages, &lt;em&gt;tidysq&lt;/em&gt;. It is a package for the tidy processing of biological sequences. Here we implemented the &lt;code&gt;%has%&lt;/code&gt; operator that checks for the presence of specific motifs in sequences.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidysq)
+
+sq(c(&amp;quot;AAAA&amp;quot;, &amp;quot;AGCA&amp;quot;, &amp;quot;CGCG&amp;quot;, &amp;quot;TTCG&amp;quot;)) %has% &amp;quot;GC&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE  TRUE  TRUE FALSE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Laura and I found it very in line with the tidyverse philosophy of code being readable and understandable by others. It can be especially seen in &lt;code&gt;dplyr&lt;/code&gt; processing pipes.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+
+tibble(
+  id = 1:4,
+  sequence = c(&amp;quot;LVGWEK&amp;quot;, &amp;quot;KLLCVN&amp;quot;, &amp;quot;ER&amp;quot;, &amp;quot;LLLY&amp;quot;)
+ ) %&amp;gt;%
+  mutate(sequence = sq(sequence)) %&amp;gt;%
+  filter(sequence %has% &amp;quot;LL&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 2
+##      id sequence  
+##   &amp;lt;int&amp;gt; &amp;lt;ami_bsc&amp;gt; 
+## 1     2 KLLCVN &amp;lt;6&amp;gt;
+## 2     4 LLLY   &amp;lt;4&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ternary-if-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ternary if operator&lt;/h2&gt;
+&lt;p&gt;Finally, one fancy trick! Have you programmed in any language that contains ternary if operator? E.g., in C++, it looks like this:&lt;/p&gt;
+&lt;pre class=&#34;cpp&#34;&gt;&lt;code&gt;(1 &amp;gt; 0) ? &amp;#39;A&amp;#39; : &amp;#39;B&amp;#39;
+
+// would return &amp;#39;A&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the expression on LHS of &lt;code&gt;?&lt;/code&gt; is TRUE, a value between &lt;code&gt;?&lt;/code&gt; and &lt;code&gt;:&lt;/code&gt; is returned. Otherwise, the value after &lt;code&gt;:&lt;/code&gt; is returned. Why use it over regular if-else? It is an &lt;em&gt;expression&lt;/em&gt;, while standard &lt;code&gt;if&lt;/code&gt; in C and C++ is not an expression. Thus, the user can assign the result of this expression to any variable.&lt;/p&gt;
+&lt;p&gt;Do you miss it in R? Probably not. In R, &lt;code&gt;if&lt;/code&gt; is an expression, so we have:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (1 &amp;gt; 0) &amp;quot;A&amp;quot; else &amp;quot;B&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;A&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But what if we &lt;em&gt;really&lt;/em&gt; wanted to have something in R more like in C++? Here you go!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`%?%` &amp;lt;- function(lhs, rhs) {
+  values &amp;lt;- rlang::enexpr(rhs)
+  if (values[[1]] != as.symbol(&amp;quot;:&amp;quot;))
+    stop(&amp;quot;RHS for `%?%` operator has to be in the form of &amp;#39;*:*&amp;#39; where &amp;#39;*&amp;#39; are any expressions&amp;quot;)
+  if (lhs) rlang::eval_bare(values[[2]]) else rlang::eval_bare(values[[3]])
+}
+
+(1 &amp;gt; 0) %?% &amp;quot;A&amp;quot; : &amp;quot;B&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;A&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I did it only because &lt;em&gt;I can&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;As you can see, I also abused the &lt;code&gt;:&lt;/code&gt; operator; not overrode: &lt;em&gt;abused&lt;/em&gt;. Inside the function, the RHS argument is in the form &lt;code&gt;expr:expr&lt;/code&gt;. Normally that would result in range. But here I used the &lt;strong&gt;non-standard evaluation&lt;/strong&gt;, using &lt;code&gt;rlang::enexpr()&lt;/code&gt; and &lt;code&gt;ralng::eval_bare()&lt;/code&gt; to actually stop R from doing what it usually does. I will probably go into detail about it some other time; right now, enjoy the fanciness.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;remark-about-precedence&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Remark about precedence&lt;/h2&gt;
+&lt;p&gt;One thing to remember: &lt;strong&gt;operators have specific precedence&lt;/strong&gt;. Those that have been programming for longer know that well from an autopsy. Those that have just started programming &lt;em&gt;will&lt;/em&gt; get to know that. Custom infix functions obey those rules as well, and you sometimes may get surprised. You can check that the operators I provided may sometimes be misleading and require parentheses to work correctly. It is worth checking out &lt;a href=&#34;https://rdrr.io/r/base/Syntax.html&#34;&gt;R operator precedence manual page&lt;/a&gt; when in doubt.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-strange-sibling-of-my-love&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The strange sibling of my love&lt;/h1&gt;
+&lt;p&gt;As a side note, I wanted to mention one operator I was unaware of before writing the article. Or: I was not fully aware of what lies underneath it.&lt;/p&gt;
+&lt;p&gt;Have you come across &lt;code&gt;:=&lt;/code&gt; operator in R? &lt;code&gt;:=&lt;/code&gt;, with no &lt;code&gt;%&lt;/code&gt; around it? You probably have seen if you are using &lt;em&gt;data.table&lt;/em&gt; or some rlang magic. So have I. However, I took it for granted that its operator existence is due to non-standard evaluation since it is always used within some specific context (similarly to my previously shown &lt;code&gt;%?%&lt;/code&gt; operator). I was astonished to find out that I can define this.&lt;/p&gt;
+&lt;p&gt;You can write something like this.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`:=` &amp;lt;- function(lhs, rhs) lhs + 5 * rhs
+2 := 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And &lt;em&gt;it works&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I told you earlier that overriding built-in operators is a &lt;em&gt;big no-no&lt;/em&gt;. What is the difference with this one? Well, &lt;strong&gt;there is no such operator in base R!&lt;/strong&gt; It turns out that &lt;code&gt;:=&lt;/code&gt; is reserved for legacy reasons, and the parser still treats it as a single operator. (You can try creating similar functions for other strings – you won’t make R treat them as infix operators without percent signs, they need to be reserved.) Yet &lt;code&gt;:=&lt;/code&gt; has no definition in base. You can read more on &lt;a href=&#34;https://stackoverflow.com/questions/32817780/what-is-the-r-assignment-operator-for&#34;&gt;the SO thread about this operator&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you want to be fancy, you can assign a classic assignment operator to this one and make others wonder how.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`:=` &amp;lt;- `&amp;lt;-`
+a := 3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(But seriously: don’t do it.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;send-the-letter&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Send the letter!&lt;/h1&gt;
+&lt;p&gt;The ability to create your custom inter-argument operators is an exquisite addition to the language. They can make the code much more readable and, usually, shorter. I strongly encourage you to take advantage of the language’s possibilities and play around with it. Since it’s your working tool, let’s make using it as enjoyable as possible!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Case Study: Modularizing a Package</title><enclosure url="https://turtletopia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>/2022/08/04/case-study-modularizing-a-package/</link>
+      <pubDate>Thu, 04 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/04/case-study-modularizing-a-package/</guid><description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/08/04/case-study-modularizing-a-package/#origins-of-deepdep&#34;%!s(MISSING) id=&#34;toc-origins-of-deepdep&#34;&gt;Origins of deepdep&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/08/04/case-study-modularizing-a-package/#separation-of-woodendesc&#34;%!s(MISSING) id=&#34;toc-separation-of-woodendesc&#34;&gt;Separation of woodendesc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/08/04/case-study-modularizing-a-package/#a-new-package-is-not-always-the-answer&#34;%!s(MISSING) id=&#34;toc-a-new-package-is-not-always-the-answer&#34;&gt;A new package is not always the answer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/08/04/case-study-modularizing-a-package/#modularization-of-tidysq&#34;%!s(MISSING) id=&#34;toc-modularization-of-tidysq&#34;&gt;Modularization of tidysq&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/08/04/case-study-modularizing-a-package/#summary&#34;%!s(MISSING) id=&#34;toc-summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;“Would it be possible…?”, “I think it would be nice if…”, “Can you implement…?”.&lt;/p&gt;
+&lt;p&gt;User feedback is a reliable source of valuable ideas for package improvement, but it’s easy to get too eager and implement everything the users want, especially when you’ve only started making a name for yourself. I and Dominik have fallen victim to that too.&lt;/p&gt;
+&lt;div id=&#34;origins-of-deepdep&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Origins of deepdep&lt;/h2&gt;
+&lt;p&gt;Our package &lt;a href=&#34;https://github.com/DominikRafacz/deepdep&#34;&gt;deepdep&lt;/a&gt; was initially created as a university project. There were four of initial authors: the two of us and our colleagues, Hubert and Szymon. The teacher had a use case in mind (creating layered dependency plots) and we wanted to implement all that could get us a good grade. So we added everything more or less related to dependency plots that we could implement at the time.&lt;/p&gt;
+&lt;p&gt;Fast forward a few years and a question came up regarding using a repository mirror other than the CRAN mirror we hardcoded. The function in question? &lt;code&gt;get_available_packages()&lt;/code&gt;. We’ve exchanged a few messages and it turned out that &lt;code&gt;get_available_packages()&lt;/code&gt; only served as a safeguard against using other mirrors within &lt;code&gt;deepdep()&lt;/code&gt; itself.&lt;/p&gt;
+&lt;p&gt;In fact, the whole backend that downloads the data needed a rewrite. &lt;code&gt;get_dependencies()&lt;/code&gt; tried to provide a unified API for retrieving dependencies from different sources and &lt;code&gt;get_descriptions()&lt;/code&gt; did the same for DESCRIPTION… but they ended up messy and counterintuitive. The user could only get data from CRAN, CRAN with Bioconductor, or from the local library that was first in &lt;code&gt;.localPaths()&lt;/code&gt;. No handling Bioconductor only, no using CRAN as a fallback for local library, no querying other repositories (e.g. R-universe). The functions had to grow a lot if we wanted them to be as universal as possible.&lt;/p&gt;
+&lt;p&gt;The other issue made us realize that the plotting feature is optional to some; that the key feature is collecting dependency data in a table, which only needs a small fraction of dependencies (&lt;a href=&#34;https://github.com/r-lib/httr&#34;&gt;httr&lt;/a&gt; and &lt;a href=&#34;https://github.com/jeroen/jsonlite&#34;&gt;jsonlite&lt;/a&gt;). We moved a lot of previous Imports to Suggests (&lt;a href=&#34;https://github.com/tidyverse/ggplot2&#34;&gt;ggplot2&lt;/a&gt;, &lt;a href=&#34;https://github.com/thomasp85/ggraph&#34;&gt;ggraph&lt;/a&gt;, &lt;a href=&#34;https://github.com/schochastics/graphlayouts&#34;&gt;graphlayouts&lt;/a&gt;, &lt;a href=&#34;https://github.com/igraph/rigraph&#34;&gt;igraph&lt;/a&gt;, and &lt;a href=&#34;https://github.com/r-lib/scales&#34;&gt;scales&lt;/a&gt;), lightening deepdep significantly… but that’s a topic for another post.&lt;/p&gt;
+&lt;p&gt;It was time to ask ourselves: “what does «deepdep» mean to us?”. The answer was: “it’s a package that helps with analyzing and visualizing hierarchy of package dependencies”. No more, no less. The functions that extracted dependencies of a package or a DESCRIPTION file were just tools to accomplish that goal. They were exported because “we couldn’t let a good function go to waste”, not because they presented a functionality we wanted to provide. If a user would want to use one of these, they’d have to install the whole deepdep; it would be like installing ggplot2 for &lt;code&gt;cut_interval()&lt;/code&gt; and &lt;code&gt;cut_width()&lt;/code&gt; instead of plotting.&lt;/p&gt;
+&lt;p&gt;The time has come for a separation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;separation-of-woodendesc&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Separation of woodendesc&lt;/h2&gt;
+&lt;p&gt;The idea is to modularize – to allow the user to install what they want. If they want to retrieve a list of dependencies for one package or a list of available packages in a repository, they should not need to install deepdep. They should be able to install a separate package that deepdep imports: &lt;a href=&#34;https://github.com/turtletopia/woodendesc&#34;&gt;woodendesc&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This package is a complete rewrite of these functionalities, but much more flexible and much more potent. To show the difference, this is how you’d get packages available on CRAN and Bioconductor in old deepdep:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Hey, a wild R 4.1.0 pipe appeared!
+deepdep::get_available_packages(bioc = TRUE) |&amp;gt;
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;A3&amp;quot;        &amp;quot;a4&amp;quot;        &amp;quot;a4Base&amp;quot;    &amp;quot;a4Classif&amp;quot; &amp;quot;a4Core&amp;quot;    &amp;quot;a4Preproc&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can’t do much more than that. The only other option is to get locally available packages. This is the signature of the function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get_available_packages &amp;lt;- function(
+  bioc = FALSE, local = FALSE, reset_cache = FALSE
+) {
+  # Implementation goes here
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But woodendesc goes three steps further. There are functions for many different sources of packages, each of them optimized for minimal network usage and maximal cache utilization:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Simple CRAN extractor
+woodendesc::wood_cran_packages()
+# Allows `release` parameter to query old releases
+woodendesc::wood_bioc_packages()
+# The user can specify different paths
+woodendesc::wood_local_packages()
+# Functions below not possible in old deepdep:
+woodendesc::wood_runiverse_packages(&amp;quot;turtletopia&amp;quot;)
+woodendesc::wood_url_packages(&amp;quot;http://www.omegahat.net/R&amp;quot;)
+woodendesc::wood_core_packages()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And if you’d want a single function like &lt;code&gt;get_available_packages()&lt;/code&gt;? Easy, just call &lt;code&gt;wood_packages()&lt;/code&gt; with specified repos (by default it only queries CRAN):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;woodendesc::wood_packages(c(&amp;quot;bioc&amp;quot;, &amp;quot;cran&amp;quot;)) |&amp;gt;
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;A3&amp;quot;        &amp;quot;a4&amp;quot;        &amp;quot;a4Base&amp;quot;    &amp;quot;a4Classif&amp;quot; &amp;quot;a4Core&amp;quot;    &amp;quot;a4Preproc&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can do it with all the sources above and even pass most parameters:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;woodendesc::wood_packages(
+  c(&amp;quot;bioc@1.5&amp;quot;, &amp;quot;core&amp;quot;, &amp;quot;runiverse@turtletopia&amp;quot;,
+    &amp;quot;http://www.omegahat.net/R&amp;quot;, &amp;quot;local#all&amp;quot;)
+) |&amp;gt;
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;00LOCK-lubridate&amp;quot; &amp;quot;aCGH&amp;quot;             &amp;quot;affy&amp;quot;             &amp;quot;affycomp&amp;quot;        
+## [5] &amp;quot;affydata&amp;quot;         &amp;quot;affylmGUI&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, you can see why’d we separate these functionalities into a new package. There are analogous functions for version codes and dependencies (about 20 functions total!) and they’d overwhelm the original intent of deepdep. Adding woodendesc as a dependency of a deepdep costs nothing because the alternative is to include this code within deepdep itself – so it’d have to be tested and maintained anyways.&lt;/p&gt;
+&lt;p&gt;But sometimes modularizing is a bit extra.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-new-package-is-not-always-the-answer&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A new package is not always the answer&lt;/h2&gt;
+&lt;p&gt;If you have a function if your package that doesn’t fit the general idea, don’t rush to move it into a separate package. There’s one important question to ask before:&lt;/p&gt;
+&lt;p&gt;“Will it be used by anything else than my package?”&lt;/p&gt;
+&lt;p&gt;And don’t be proactive here. If your answer is: “not right now, but perhaps in the future…”, just wait for the future. Keep the function in the package until the time comes and simply remove or deprecate it then (depending on how popular it gets).&lt;/p&gt;
+&lt;p&gt;There’s one such functionality in deepdep: &lt;code&gt;get_downloads()&lt;/code&gt; and &lt;code&gt;plot_downloads()&lt;/code&gt;. Analyzing download statistics is not exactly the goal of deepdep, but there’s no point in making it into a separate package; these two don’t introduce any new dependencies nor do they crowd the namespace. And no one expressed any interest in having it separate from deepdep yet.&lt;/p&gt;
+&lt;p&gt;Besides, nobody &lt;a href=&#34;https://github.com/eddelbuettel/digest&#34;&gt;creates a package around a single function&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;modularization-of-tidysq&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Modularization of tidysq&lt;/h2&gt;
+&lt;p&gt;You might have noticed that woodendesc consists of functions that served as a backbone of deepdep while querying and plotting download statistics are more of an extension. There’s one package we’ve created that was planned to be extended since the beginning: &lt;a href=&#34;https://github.com/BioGenies/tidysq&#34;&gt;tidysq&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It’s a package that compresses biological sequences (e.g. DNA/RNA) by coding each letter with fewer bits (3 in DNA/RNA case). We’ve included a few basic operations like reversing, subsetting, translating to amino acids, and reading a FASTA file – the most common file format for biological sequences. We’ve intentionally omitted many more advanced functions, though.&lt;/p&gt;
+&lt;p&gt;Why? Because there are countless functions and algorithms we could implement and that’d make tidysq huge. Instead, we’d gone the route of modularization. The idea is to have tidysq with the base functionality and several packages depending on tidysq, oriented towards certain aspects of working with biological sequences.&lt;/p&gt;
+&lt;p&gt;For example, if we were to create a set of &lt;code&gt;read_x()&lt;/code&gt; and &lt;code&gt;write_x()&lt;/code&gt; functions for various formats like FASTQ or BAM/SAM, we’d place it in a separate package that’d have tidysq in Depends (and LinkingTo) fields. We’d call it something like “tidysqfiles” to signify that it’s an extension to tidysq.&lt;/p&gt;
+&lt;p&gt;(We may or may not be working on such a package.)&lt;/p&gt;
+&lt;p&gt;If you want to see a real-life example of a package ecosystem, see &lt;a href=&#34;https://mlr3verse.mlr-org.com&#34;&gt;mlr3 and mlr3verse&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;In short, there are two cases where modularization should be considered:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;strong&gt;the backend to the main functionality grows and overshadows the rest of the package&lt;/strong&gt; – create a set of logically related backend functions, move them into a new package, and add that package to Imports of the old one;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;there’s an optional functionality that requires additional imports or significantly increases the weight of the package&lt;/strong&gt; – collect several such functionalities so that they are somewhat related, move them into a new package, and add the old package to the Imports/Depends field of the new one.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Be wary of separation if the only use case for the new package is to be imported by the old one. Avoid it if there are too few functionalities for a new package. Sometimes copying a function or two isn’t a sin.&lt;/p&gt;
+&lt;p&gt;Do you want to borrow &lt;a href=&#34;https://github.com/turtletopia/woodendesc/blob/master/R/wrrr.R&#34;&gt;a code that shows an install prompt for a missing package&lt;/a&gt;?&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

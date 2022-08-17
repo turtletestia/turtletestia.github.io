@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rlang on Turtletopia: a blog about programming in R</title>
+    <link>/tags/rlang/</link>
+    <description>Recent content in rlang on Turtletopia: a blog about programming in R</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/rlang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sonnet to infix function</title><enclosure url="https://turtletopia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>/2022/08/10/sonnet-to-infix-function/</link>
+      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/10/sonnet-to-infix-function/</guid><description>
+
+
+&lt;div id=&#34;some-poetry-for-the-programmers&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Some poetry for the programmers&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Blest be the day, and blest be the month and year,&lt;/p&gt;
+&lt;p&gt;Season and hour and very moment blest,&lt;/p&gt;
+&lt;p&gt;The lovely IDE where first possessed&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;By two percent signs I found me prisoner; (…)&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Francesco Petrarch, Sonnet 61. Translated by Joseph Auslander. Possibly with some spicing it up by me&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;subject-and-addressee-of-the-poem&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Subject and addressee of the poem&lt;/h1&gt;
+&lt;p&gt;Custom infix functions are one of my favorite features in R. This article is my love letter to them. But first, a quick recap.&lt;/p&gt;
+&lt;p&gt;For those unfamiliar with the terminology, &lt;em&gt;infix function&lt;/em&gt; is a function &lt;code&gt;fun&lt;/code&gt; which is called using &lt;code&gt;infix notation&lt;/code&gt;, e.g., &lt;code&gt;x fun y&lt;/code&gt; instead of &lt;code&gt;fun(x, y)&lt;/code&gt;. Those functions are also called &lt;em&gt;infix operators&lt;/em&gt; by base R, and I will use those terms and name &lt;em&gt;infixes&lt;/em&gt; interchangeably. There are a lot of infix operators in base R used very frequently, i.e., arithmetic or logical operators. We use them so often that we usually forget that they are functions. And that we can &lt;strong&gt;call them just like regular functions&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;23 + 19&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 42&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`+`(23, 19)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 42&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you may have noticed, when calling such a function in a non-infix-manner, we need to use backticks around the operator to avoid calling it regularly.&lt;/p&gt;
+&lt;p&gt;To prove that they share a lot of typical behavior with functions, I am going to demonstrate to you how to &lt;strong&gt;redefine them just like regular functions&lt;/strong&gt;. We can, for example, make the &lt;code&gt;+&lt;/code&gt; operator work like a multiplication.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`+` &amp;lt;- function(lhs, rhs) lhs * rhs
+23 + 19&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 437&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let it ring out loud: &lt;strong&gt;you should not do that at all&lt;/strong&gt;. Overriding the default behavior of functions may be dangerous, as it interferes with other chunks of code using the operator. I showed this trick only for demonstration purposes.&lt;/p&gt;
+&lt;p&gt;(Side note: you might be aware that some packages change the default behavior of operators, e.g., &lt;code&gt;ggplot2&lt;/code&gt; has its own &lt;code&gt;+&lt;/code&gt; for joining plot elements. However, this is a slightly different situation. They do not create a whole new function but only add a &lt;em&gt;method&lt;/em&gt; for &lt;em&gt;generic function&lt;/em&gt;. They do not &lt;em&gt;override&lt;/em&gt; the behavior, but more like &lt;em&gt;overload&lt;/em&gt; it.)&lt;/p&gt;
+&lt;p&gt;Additional remark to make: in this assignment call, backticks are also necessary. An alternative is using quotes, but it is inadvisable, and its presence in the language is entirely due to legacy reasons. You can read more about it in &lt;a href=&#34;https://adv-r.hadley.nz/names-values.html#non-syntactic&#34;&gt;Hadley’s book&lt;/a&gt;. In &lt;a href=&#34;https://adv-r.hadley.nz/functions.html?q=infix#infix-functions&#34;&gt;another chapter&lt;/a&gt;, you can find more about infix functions.&lt;/p&gt;
+&lt;p&gt;Once again: &lt;strong&gt;do not override built-in infix functions&lt;/strong&gt;. BUT. &lt;strong&gt;Create custom infix functions!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;R allows for creating your operators using double &lt;strong&gt;percent signs&lt;/strong&gt;. A few shipped with the base R packages, including inclusion operator &lt;code&gt;%in%&lt;/code&gt; (pun intended) or matrix multiplication operator &lt;code&gt;%*%&lt;/code&gt;. But You can create more. And we will explore it in the next section.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;enumeration-is-an-important-stylistic-device&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Enumeration is an important stylistic device&lt;/h1&gt;
+&lt;div id=&#34;piping-operators&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Piping operators&lt;/h2&gt;
+&lt;p&gt;The most widely known example is the piping operator: &lt;code&gt;%&amp;gt;%&lt;/code&gt;. I assume that you are familiar with it. If not, &lt;a href=&#34;https://dplyr.tidyverse.org/&#34;&gt;you better get to know the dplyr package&lt;/a&gt;. The pipe comes from &lt;a href=&#34;https://magrittr.tidyverse.org/&#34;&gt;magrittr&lt;/a&gt; package, but dplyr shows its natural strength and the most significant advantage of using custom operators: &lt;strong&gt;custom infixes make code more readable&lt;/strong&gt;. When we apply operations one by one, it makes more sense to write those operations in order of application, not inverse order, as we do without infix operators. The operator’s shape is also essential, as it suggests the direction of the data flow. For me, it is more natural to read and understand&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x %&amp;gt;% 
+  fun_1 %&amp;gt;% 
+  fun_2 %&amp;gt;% 
+  fun_3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rather than&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fun_3(fun_2(fun_1(x)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It became so popular that R 4.1.0 included its pipe, &lt;code&gt;|&amp;gt;&lt;/code&gt;. However, I will not dwell more on that because others have already said a lot about pipes. I only want to mention, what is often forgotten by newcomers, that magrittr offer more than one type of pipe. Go check them out if you don’t know them!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;null-default-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;NULL-default operator&lt;/h2&gt;
+&lt;p&gt;Another tremendous and straightforward function is &lt;code&gt;%||%&lt;/code&gt;. It is exported by the &lt;em&gt;rlang&lt;/em&gt; package (it’s the turtleblog after all”, so rlang mention is obligatory), but other packages borrow this idea to avoid dependency. The code is straightforward and clearly explains what the function is intended to do.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`%||%` &amp;lt;- function(lhs, rhs) if (is.null(lhs)) rhs else lhs
+
+34 %||% 8&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 34&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;NULL %||% 10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This one comes in handy when you have optional &lt;code&gt;NULL&lt;/code&gt;s returned by a function or possibly &lt;code&gt;NULL&lt;/code&gt; parameters of the function or named function arguments. In the code, it looks way more straightforward than the expansion of the function definition itself. I usually do not export such a helper function to the end user. But it is worth repeating that &lt;strong&gt;readability of your code for yourself should be as important as readability for others&lt;/strong&gt;. If such infixes help you, then you should use them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;null-propagating-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;NULL-propagating operator&lt;/h2&gt;
+&lt;p&gt;Let’s stay with &lt;code&gt;NULL&lt;/code&gt;-related functions for a little longer. Now it is time for my creation. When I build packages or shiny apps, it happens quite often that I need to apply some function to some object, but if it is &lt;code&gt;NULL&lt;/code&gt;, I need to return &lt;code&gt;NULL&lt;/code&gt;. For those situations, I created the &lt;code&gt;%?&amp;gt;%&lt;/code&gt; operator:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`%?&amp;gt;%` &amp;lt;- function(lhs, rhs) if (is.null(lhs)) NULL else rhs(lhs)
+
+7 %?&amp;gt;% exp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1096.633&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;NULL %?&amp;gt;% exp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This one is some modification of a standard pipe but serves a specific purpose. It simplified my code significantly, and I love it for its &lt;strong&gt;conciseness&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;motif-inclusion-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Motif inclusion operator&lt;/h2&gt;
+&lt;p&gt;Now, an example from one of our packages, &lt;em&gt;tidysq&lt;/em&gt;. It is a package for the tidy processing of biological sequences. Here we implemented the &lt;code&gt;%has%&lt;/code&gt; operator that checks for the presence of specific motifs in sequences.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidysq)
+
+sq(c(&amp;quot;AAAA&amp;quot;, &amp;quot;AGCA&amp;quot;, &amp;quot;CGCG&amp;quot;, &amp;quot;TTCG&amp;quot;)) %has% &amp;quot;GC&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE  TRUE  TRUE FALSE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Laura and I found it very in line with the tidyverse philosophy of code being readable and understandable by others. It can be especially seen in &lt;code&gt;dplyr&lt;/code&gt; processing pipes.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+
+tibble(
+  id = 1:4,
+  sequence = c(&amp;quot;LVGWEK&amp;quot;, &amp;quot;KLLCVN&amp;quot;, &amp;quot;ER&amp;quot;, &amp;quot;LLLY&amp;quot;)
+ ) %&amp;gt;%
+  mutate(sequence = sq(sequence)) %&amp;gt;%
+  filter(sequence %has% &amp;quot;LL&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 2
+##      id sequence  
+##   &amp;lt;int&amp;gt; &amp;lt;ami_bsc&amp;gt; 
+## 1     2 KLLCVN &amp;lt;6&amp;gt;
+## 2     4 LLLY   &amp;lt;4&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ternary-if-operator&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ternary if operator&lt;/h2&gt;
+&lt;p&gt;Finally, one fancy trick! Have you programmed in any language that contains ternary if operator? E.g., in C++, it looks like this:&lt;/p&gt;
+&lt;pre class=&#34;cpp&#34;&gt;&lt;code&gt;(1 &amp;gt; 0) ? &amp;#39;A&amp;#39; : &amp;#39;B&amp;#39;
+
+// would return &amp;#39;A&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the expression on LHS of &lt;code&gt;?&lt;/code&gt; is TRUE, a value between &lt;code&gt;?&lt;/code&gt; and &lt;code&gt;:&lt;/code&gt; is returned. Otherwise, the value after &lt;code&gt;:&lt;/code&gt; is returned. Why use it over regular if-else? It is an &lt;em&gt;expression&lt;/em&gt;, while standard &lt;code&gt;if&lt;/code&gt; in C and C++ is not an expression. Thus, the user can assign the result of this expression to any variable.&lt;/p&gt;
+&lt;p&gt;Do you miss it in R? Probably not. In R, &lt;code&gt;if&lt;/code&gt; is an expression, so we have:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (1 &amp;gt; 0) &amp;quot;A&amp;quot; else &amp;quot;B&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;A&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But what if we &lt;em&gt;really&lt;/em&gt; wanted to have something in R more like in C++? Here you go!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`%?%` &amp;lt;- function(lhs, rhs) {
+  values &amp;lt;- rlang::enexpr(rhs)
+  if (values[[1]] != as.symbol(&amp;quot;:&amp;quot;))
+    stop(&amp;quot;RHS for `%?%` operator has to be in the form of &amp;#39;*:*&amp;#39; where &amp;#39;*&amp;#39; are any expressions&amp;quot;)
+  if (lhs) rlang::eval_bare(values[[2]]) else rlang::eval_bare(values[[3]])
+}
+
+(1 &amp;gt; 0) %?% &amp;quot;A&amp;quot; : &amp;quot;B&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;A&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I did it only because &lt;em&gt;I can&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;As you can see, I also abused the &lt;code&gt;:&lt;/code&gt; operator; not overrode: &lt;em&gt;abused&lt;/em&gt;. Inside the function, the RHS argument is in the form &lt;code&gt;expr:expr&lt;/code&gt;. Normally that would result in range. But here I used the &lt;strong&gt;non-standard evaluation&lt;/strong&gt;, using &lt;code&gt;rlang::enexpr()&lt;/code&gt; and &lt;code&gt;ralng::eval_bare()&lt;/code&gt; to actually stop R from doing what it usually does. I will probably go into detail about it some other time; right now, enjoy the fanciness.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;remark-about-precedence&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Remark about precedence&lt;/h2&gt;
+&lt;p&gt;One thing to remember: &lt;strong&gt;operators have specific precedence&lt;/strong&gt;. Those that have been programming for longer know that well from an autopsy. Those that have just started programming &lt;em&gt;will&lt;/em&gt; get to know that. Custom infix functions obey those rules as well, and you sometimes may get surprised. You can check that the operators I provided may sometimes be misleading and require parentheses to work correctly. It is worth checking out &lt;a href=&#34;https://rdrr.io/r/base/Syntax.html&#34;&gt;R operator precedence manual page&lt;/a&gt; when in doubt.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-strange-sibling-of-my-love&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The strange sibling of my love&lt;/h1&gt;
+&lt;p&gt;As a side note, I wanted to mention one operator I was unaware of before writing the article. Or: I was not fully aware of what lies underneath it.&lt;/p&gt;
+&lt;p&gt;Have you come across &lt;code&gt;:=&lt;/code&gt; operator in R? &lt;code&gt;:=&lt;/code&gt;, with no &lt;code&gt;%&lt;/code&gt; around it? You probably have seen if you are using &lt;em&gt;data.table&lt;/em&gt; or some rlang magic. So have I. However, I took it for granted that its operator existence is due to non-standard evaluation since it is always used within some specific context (similarly to my previously shown &lt;code&gt;%?%&lt;/code&gt; operator). I was astonished to find out that I can define this.&lt;/p&gt;
+&lt;p&gt;You can write something like this.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`:=` &amp;lt;- function(lhs, rhs) lhs + 5 * rhs
+2 := 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And &lt;em&gt;it works&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I told you earlier that overriding built-in operators is a &lt;em&gt;big no-no&lt;/em&gt;. What is the difference with this one? Well, &lt;strong&gt;there is no such operator in base R!&lt;/strong&gt; It turns out that &lt;code&gt;:=&lt;/code&gt; is reserved for legacy reasons, and the parser still treats it as a single operator. (You can try creating similar functions for other strings – you won’t make R treat them as infix operators without percent signs, they need to be reserved.) Yet &lt;code&gt;:=&lt;/code&gt; has no definition in base. You can read more on &lt;a href=&#34;https://stackoverflow.com/questions/32817780/what-is-the-r-assignment-operator-for&#34;&gt;the SO thread about this operator&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you want to be fancy, you can assign a classic assignment operator to this one and make others wonder how.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;`:=` &amp;lt;- `&amp;lt;-`
+a := 3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(But seriously: don’t do it.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;send-the-letter&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Send the letter!&lt;/h1&gt;
+&lt;p&gt;The ability to create your custom inter-argument operators is an exquisite addition to the language. They can make the code much more readable and, usually, shorter. I strongly encourage you to take advantage of the language’s possibilities and play around with it. Since it’s your working tool, let’s make using it as enjoyable as possible!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating Observers in Loop. Shiny Reactivity Tricks: Episode 1</title><enclosure url="https://turtletopia.github.io/images/logo.png" type="image/jpg"></enclosure>
+      <link>/2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/</link>
+      <pubDate>Sat, 09 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/</guid><description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#preface&#34;%!s(MISSING)&gt;Preface&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#use-case-and-naive-solution&#34;%!s(MISSING)&gt;Use case and naive solution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#a-quick-recap-of-environments&#34;%!s(MISSING)&gt;A quick recap of environments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#environments-in-shiny&#34;%!s(MISSING)&gt;Environments in Shiny&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#solution-1-create-an-environment-for-each-observer&#34;%!s(MISSING)&gt;Solution 1: Create an environment for each observer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#solution-2-inject-the-constants&#34;%!s(MISSING)&gt;Solution 2: Inject the constants&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#solution-3-or-solution-suggestion-utilize-shiny-modules&#34;%!s(MISSING)&gt;Solution 3 (or solution suggestion): Utilize Shiny modules&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/#summary&#34;%!s(MISSING)&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;preface&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Preface&lt;/h1&gt;
+&lt;p&gt;I’ve been recently working a lot in Shiny, and I’ve constantly been stumbling across new problems. Many of them seemed interesting enough for me to want to write an article. However, in the course of the work, I found that I had too much to write about… so I decided to break it down into a series of smaller articles linked to each other.&lt;/p&gt;
+&lt;p&gt;I’ll start with something simple: creating some objects in a loop. If you think it’s too easy, wait a minute; you may be surprised! This seemingly easy task will be an excuse to understand how certain things in R and shiny work underneath, even though we ignore it daily.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;use-case-and-naive-solution&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Use case and naive solution&lt;/h1&gt;
+&lt;p&gt;Let’s start with some simple examples. Like all simple examples, it may feel highly artificial, but at least it is not very complex. Let’s say that we want to have an app that has four numeric inputs. The first input allows the user to select an &lt;em&gt;Important Number&lt;/em&gt;. Other inputs… well, they are not used. But we want them to have their values updated every time the &lt;em&gt;Important Number&lt;/em&gt; is updated. And we want to have separate observers to handle them (yes, I know that one observer would work here as well… but I told you this might feel artificial!). Their values are calculated via some calculations which are entirely irrelevant right now.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(shiny)
+# side note: all functions which are not prepended with scope operator 
+# are either from base R or from the `shiny` package
+
+do_calculations &amp;lt;- function(important, other) {
+  # this is totally random
+  (important * other * 2^5 + important - 7 * other) %% 101
+}
+
+ui &amp;lt;- fluidPage(
+  numericInput(&amp;quot;important&amp;quot;, &amp;quot;Select important number&amp;quot;, 
+               min = 0, max = 100, value = 42),
+  numericInput(&amp;quot;var_1&amp;quot;, &amp;quot;Select input 1&amp;quot;, 
+               min = 0, max = 100, value = 0),
+  numericInput(&amp;quot;var_2&amp;quot;, &amp;quot;Select input 2&amp;quot;, 
+               min = 0, max = 100, value = 0),
+  numericInput(&amp;quot;var_3&amp;quot;, &amp;quot;Select input 3&amp;quot;, 
+               min = 0, max = 100, value = 0)
+)
+
+server &amp;lt;- function(input, output, session) {
+  observe({
+    updateSliderInput(
+      session = session,
+      inputId = &amp;quot;var_1&amp;quot;,
+      value = do_calculations(input[[&amp;quot;important&amp;quot;]], 1)
+    )
+  })
+
+  observe({
+    updateSliderInput(
+      session = session,
+      inputId = &amp;quot;var_2&amp;quot;,
+      value = do_calculations(input[[&amp;quot;important&amp;quot;]], 2)
+    )
+  })
+
+  observe({
+    updateSliderInput(
+      session = session,
+      inputId = &amp;quot;var_3&amp;quot;,
+      value = do_calculations(input[[&amp;quot;important&amp;quot;]], 3)
+    )
+  })
+}
+
+shinyApp(ui, server)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://turtletopia.github.io/2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/peek_1.gif&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Simple version of the app.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;It works like a charm! But we can easily see that there is a lot of copypasting. And copypasting is something we should avoid. (Some other day, I would love to say something more about it in general.) If you have gone so far into the article, you probably know what I want to do: a loop. There are two prominent places to use it – in UI and server. UI first, since it seems more manageable. We are R users, so we should make &lt;em&gt;real&lt;/em&gt; loops only when there are no other means. Thus we are using good old &lt;code&gt;lapply&lt;/code&gt;, as it is even simpler than trying to use &lt;em&gt;for&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ui &amp;lt;- fluidPage(
+  numericInput(&amp;quot;important&amp;quot;, &amp;quot;Select important number&amp;quot;, 
+               min = 0, max = 100, value = 42),
+  lapply(1:3, function(i) {
+    numericInput(inputId = paste0(&amp;quot;var_&amp;quot;, i), paste0(&amp;quot;Select input &amp;quot;, i), 
+                 min = 0, max = 100, value = 0)
+  })
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Okay, this is simple, indeed. It works as it did without the loop; you can check on your own if you don’t believe me.&lt;/p&gt;
+&lt;p&gt;Now it’s time for the server. Here we are calling &lt;code&gt;observer&lt;/code&gt; mainly for its side effect (i.e. registration of observers), so the &lt;code&gt;for&lt;/code&gt; loop might be more appropriate.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;server &amp;lt;- function(input, output, session) {
+  for (i in 1:3) {
+    observe({
+      updateSliderInput(
+        session = session,
+        inputId = paste0(&amp;quot;var_&amp;quot;, i),
+        value = do_calculations(input[[&amp;quot;important&amp;quot;]], i)
+      )
+    })
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And now – something strange happens! Only the last of the observers works as expected; others seem off. If you know at first glance what happens there – congrats; you are good at R and Shiny. If you don’t know, then we need to understand what environments are relevant for Shiny.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-quick-recap-of-environments&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;A quick recap of environments&lt;/h1&gt;
+&lt;p&gt;Each R expression is evaluated in some &lt;strong&gt;environment&lt;/strong&gt;. An environment can be considered a list of names with associated values. There are, however, some differences, of which two are the most important:&lt;/p&gt;
+&lt;p&gt;Firstly, each environment contains a &lt;strong&gt;reference to its parent&lt;/strong&gt;, so they create a tree-like structure. One exception to this rule is the &lt;em&gt;empty environment&lt;/em&gt; which does not have a parent and serves as the root of the whole hierarchy.&lt;/p&gt;
+&lt;p&gt;Secondly, &lt;strong&gt;environments are mutable&lt;/strong&gt;. If you pass an environment to a function and mutate some objects inside, the values in the environments are also changed for the external viewer.&lt;/p&gt;
+&lt;p&gt;Every time we create an object in R and assign its value to some time, we bind this object within some environment. Calls from the console or scripts at the top-level assign objects to &lt;em&gt;the global environment&lt;/em&gt;. Creating variables inside a function assigns them to an &lt;em&gt;execution environment&lt;/em&gt;. Each &lt;em&gt;package&lt;/em&gt; also has its environment, where all its functions and objects are available.&lt;/p&gt;
+&lt;p&gt;When we want to access some variable, it is first sought in the &lt;em&gt;evaluation environment&lt;/em&gt;, i.e. the environment where this call is performed. If no object of this name is found, it is sought down the &lt;strong&gt;search path&lt;/strong&gt;: in the parent environment of the calling env, then in the parent of the parent, etc., down to the empty env. At the start of the R session, base packages are inserted into this hierarchy, so those objects are accessible from the global environment. Additionally, every time we use &lt;code&gt;library&lt;/code&gt;, the environment of the loaded package is inserted into the path. That explains why we have access to all the functions and objects from the console. That also explains why objects in the global environment are visible from within the function called in the global environment.&lt;/p&gt;
+&lt;p&gt;One more thing worth mentioning – in R, we can manage the time of evaluation of the code. If a function is provided with an expression, there are means to suspend the evaluation of its arguments. Then we can modify it or evaluate it later.&lt;/p&gt;
+&lt;p&gt;I won’t go into the details of how to do it right now (but don’t worry, I like the topic too much not to tell more about it). If you want to get new knowledge or refresh the one that you’ve got, you can see &lt;a href=&#34;https://adv-r.hadley.nz/environments.html&#34;&gt;a chapter in Advanced R by Hadley Wickham&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;environments-in-shiny&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Environments in Shiny&lt;/h1&gt;
+&lt;p&gt;Environments are super crazy functional. The fact that they exist does Shiny work at all. And they are also the reason why our &lt;em&gt;for&lt;/em&gt; loop did not work. That is, of course, only a part of the whole picture, but such complicated topics are easier to swallow in smaller bits.&lt;/p&gt;
+&lt;p&gt;We need to focus on what happens when the app starts (e.g. when function &lt;code&gt;shinyApp(ui, server)&lt;/code&gt; is called). Somewhere in the guts of Shiny, the &lt;code&gt;server&lt;/code&gt; function is called. Just as with any other function, it has its execution environment. This environment is provided with &lt;code&gt;input&lt;/code&gt; and &lt;code&gt;output&lt;/code&gt; lists of reactive values; it also has the global environment as its ancestor (and therefore, it has access to any loaded packages). When the code inside this function is executed, objects specified by the user are created. Significantly, all reactive objects are made, and the user can modify &lt;code&gt;input&lt;/code&gt; and &lt;code&gt;output&lt;/code&gt; reactive values. Also, our objects of focus – observers – are registered.&lt;/p&gt;
+&lt;p&gt;The most crucial point is: when the &lt;code&gt;server&lt;/code&gt; function is executed, and R stumbles upon the &lt;code&gt;observer&lt;/code&gt; call, it &lt;strong&gt;does not&lt;/strong&gt; evaluate the code passed as the first argument. Instead, it registers the observer and stores the code for later evaluation. We are still at the start-up stage, and now Shiny only creates net reactive dependencies. No inputs are available; they appear just after somebody opens the browser and initializes the page. That also applies to all expressions enclosed in &lt;code&gt;reactive&lt;/code&gt;’s, &lt;code&gt;render&lt;/code&gt;’s, etc., but we skip them in the other part as they do not appear in our example.&lt;/p&gt;
+&lt;p&gt;Now goes the neat part: during the application runtime, code provided to &lt;code&gt;observer&lt;/code&gt; is evaluated as is in the server function execution environment. So, when seeking a variable, it looks for its value in this environment. It does not magically replace the &lt;code&gt;i&lt;/code&gt; variable with the value used in the loop iteration, as might be expected. I made a diagram (included below) which illustrates how it &lt;strong&gt;does not&lt;/strong&gt; work.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://turtletopia.github.io/2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/observer_exp.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Expected situation&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Stating it once again: every time the observer is called, &lt;code&gt;i&lt;/code&gt; is being sought in the current or enclosing environments. But that introduces the question: shouldn’t that mean that &lt;code&gt;i&lt;/code&gt; is missing and calling &lt;code&gt;i&lt;/code&gt; raises an error? Why does it work for one of the observers? The answer is: actually, all three observers work. But they all modify the input number 3. And that is because of one quite peculiar property of R. Namely, the variable used to iterate &lt;strong&gt;is not destroyed&lt;/strong&gt; after finishing the loop execution, and it stays in the environment with the value of the last value used in the loop. In our case, &lt;code&gt;i&lt;/code&gt; exists in the server environment and has the value &lt;code&gt;3&lt;/code&gt;. See the diagram below.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://turtletopia.github.io/2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/observer_actual.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Actual situation&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;As a side note, I want to add that there is also the topic of visibility of Shiny objects between users’ sessions. It is covered by &lt;a href=&#34;https://shiny.rstudio.com/articles/scoping.html&#34;&gt;an article on the official Shiny webpage&lt;/a&gt;. I strongly recommend reading it.&lt;/p&gt;
+&lt;p&gt;Since we already know what happens, we must learn how to get around it. There are at least a few solutions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solution-1-create-an-environment-for-each-observer&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Solution 1: Create an environment for each observer&lt;/h1&gt;
+&lt;p&gt;I told you that the code in observers etc., is evaluated in the server environment. It is true &lt;strong&gt;by default&lt;/strong&gt;. There are ways of changing it, even straightforward ways. &lt;code&gt;observer&lt;/code&gt; function has a parameter &lt;code&gt;env&lt;/code&gt;, which allows us to set the evaluation environment.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for (i in 1:3) {
+  env &amp;lt;- new.env()
+  env[[&amp;quot;i&amp;quot;]] &amp;lt;- i
+    
+  observe({
+    updateSliderInput(
+      session = session,
+      inputId = paste0(&amp;quot;var_&amp;quot;, i),
+      value = do_calculations(input[[&amp;quot;important&amp;quot;]], i)
+    )
+  }, env = env)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In each loop iteration, we create a new environment whose parent is the server environment. Then we assign the current value of the &lt;code&gt;i&lt;/code&gt; to the environment and provide the env as a parameter for the observer. As a result, each observer has its environment with its own &lt;code&gt;i&lt;/code&gt; object. Those envs refer to server env as a parent, so all other variables are accessible. The trick is possible because those numerous envs are not used inside the observers’ quoted code; they are kept together with code. The concept is illustrated in the diagram below.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://turtletopia.github.io/2022/07/09/creating-observers-in-loop-shiny-reactivity-tricks-episode-one/observer_envs.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Solution with the creation of environments&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;We can also do the same with a small change. &lt;code&gt;new.env()&lt;/code&gt; call can be replaced with &lt;code&gt;rlang::env()&lt;/code&gt;. &lt;em&gt;rlang&lt;/em&gt; is a package that overhauls the interface of operating on expressions and environments in R, as base R ways of doing it are messy. A minor change, but on this blog, we will demonstrate rlang features heavily, so you should get used to it. Additional source is &lt;a href=&#34;https://rlang.r-lib.org/&#34;&gt;the project webpage&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solution-2-inject-the-constants&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Solution 2: Inject the constants&lt;/h1&gt;
+&lt;p&gt;Speaking of rlang… The second solution employs rlang’s features and does something very clever: it replaces a variable with a constant.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for (i in 1:3) {
+  rlang::inject({
+    observe({
+      updateSliderInput(
+        session = session,
+        inputId = paste0(&amp;quot;var_&amp;quot;, !!i),
+        value = do_calculations(input[[&amp;quot;important&amp;quot;]], !!i)
+      )
+    })
+  })
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Beautiful, isn’t it? This code looks almost the same as the code from the not-working approach of simple iteration. The first difference is prepending &lt;code&gt;i&lt;/code&gt; variable appearances with the &lt;code&gt;!!&lt;/code&gt; symbol (&lt;em&gt;bang-bang&lt;/em&gt;, as ones say, or more professionally: &lt;em&gt;unquotation symbol&lt;/em&gt;). The second is wrapping the whole observer with the &lt;code&gt;rlang::inject&lt;/code&gt; function. This function replaces everything prepended by an unquotation symbol with the value of the symbol. That operates on the level of expression. Before &lt;code&gt;observer&lt;/code&gt; is called, both appearances of &lt;code&gt;i&lt;/code&gt; are replaced with the current value of &lt;code&gt;i&lt;/code&gt;. Only after that the observer is called, and modified code is saved instead. You have to admit: this is elegant. It also makes the code work as we expected the original code to work, that is, without creating additional environments.&lt;/p&gt;
+&lt;p&gt;This solution is possible with base R, but the code is significantly less appealing and easy to understand, so we will only stick to it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solution-3-or-solution-suggestion-utilize-shiny-modules&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Solution 3 (or solution suggestion): Utilize Shiny modules&lt;/h1&gt;
+&lt;p&gt;Finally, there is one more solution. If you are already familiar with &lt;em&gt;shiny modules&lt;/em&gt; then it should be clear that you can use them. I will not provide the code yet, mainly because it seems to me that many things have already happened today. But don’t worry – I have a lot to say about the modules too. We will come back to it. Those that know how they work can write code using modules as homework. Those that do not know should read some introduction to shiny modules.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;p&gt;When environments and modification of expressions come into play, even as simple as loops may get complicated, I wanted to show you that coming across them in R (especially in Shiny) is easy. Without a slightly more profound understanding of it, they might seem illogical and not rarely impossible to overcome. Having the additional knowledge and ability to use such tools as rlang might allow you to make your code better and cleaner. And sometimes working at all.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
