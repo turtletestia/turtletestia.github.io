@@ -1,4 +1,6 @@
-baseurl: https://turtletestia.github.io
+baseURL: https://turtletestia.github.io
+relativeurls: false
+canonifyurls: true
 languageCode: en-us
 title: "Turtletopia: a blog about programming in R"
 theme: hugo-lithium

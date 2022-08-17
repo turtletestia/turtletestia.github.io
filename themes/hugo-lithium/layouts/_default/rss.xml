@@ -15,7 +15,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
-    <link>{{ .Permalink }}</link>
+    <link>{{ $.Site.BaseURL }}</link>
     <description>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>{{ with .Site.LanguageCode }}
     <language>{{.}}</language>{{end}}{{ with .Site.Author.email }}
@@ -29,7 +29,7 @@
     {{ range $pages }}
     <item>
       <title>{{ .Title }}</title>
-      {{- $pagePermalink := printf "%s%s" $.Site.Params.address .Permalink -}}
+      {{- $pagePermalink := printf "%s%s" $.Site.BaseURL .Permalink -}}
       {{- with .Params.images -}}
       {{- $img := index . 0 -}}
       <enclosure url="{{ printf "%s%s" $pagePermalink $img }}" type="image/jpg"></enclosure>
@@ -49,8 +49,9 @@
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
-      <!-- {{- $content := replaceRE "a href=\"(#.*?)\"" (printf "%s%s%s" "a href=\"" (.Permalink | absURL) "$1\"") .Content -}}
-      {{- $content = replaceRE "img src=\"(.*?)\"" (printf "%s%s%s" "img src=\""  (.Permalink | absURL) "$1\"") $content -}} -->
+      <!-- {{- $content := replaceRE "a href=\"(#.*?)\"" (printf "%s%s%s" "a href=\"" (.Permalink | absURL) "$1\"") .Content -}} -->
+      {{- $content = replaceRE "img src=\"(.*?)\"" (printf "%s%s%s" "img src=\""  .Site.BaseURL "$1\"") $content -}}
+      <!-- (printf "%s%s%s" "img src=\"" $pagePermalink "$1\"") -->
       <description>{{ .Content | html }}</description>
     </item>
     {{ end }}
